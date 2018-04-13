@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>JSUT Runner</title>
+    <script src="Maths.js"></script>
+    <script src="jsu.js"></script>
+    <script src="spec.js"></script>
+    <link href="tables-min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <table class="pure-table pure-table-bordered">
+        <thead>
+            <tr>
+                <td>Tested</td>
+                <td>Result</td>
+                <td>Expected</td>
+                <td>Actual</td>
+            </tr>
+        </thead>
+        <tbody id="tbod"></tbody>
+    </table>
+
+    <p>
+        used <a href="https://purecss.io">pure css</a> for table styling
+    </p>
+
+    <script>
+        var results = [];
+
+        window.onload = function() {
+            results.push(
+                Factorial4_must_equal_to_24(),
+                Factorial0_must_equal_to_1(),
+                isPrime_must_return_false_when_given_9());
+
+            var str = "";
+            for (i in results) {
+
+                var color = null;
+                if (results[i].result) {
+                    color = "#00AA00";
+                } else {
+                    color = "#FF0000";
+                }
+
+                str += "<tr bgcolor='" + color + "'><td>" + results[i].name + "</td><td>" + results[i].result + "</td><td>" + results[i].expected + "</td><td>" + results[i].actual + "</td></tr>";
+            }
+
+            this.document.getElementById("tbod").innerHTML = str;
+        };
+    </script>
+
+</body>
